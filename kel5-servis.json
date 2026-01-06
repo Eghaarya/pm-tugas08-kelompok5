@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "8d732fab-e0c6-43df-93a9-b4a587a32950",
+		"name": "kel5-servis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "51109991",
+		"_collection_link": "https://eghaarya72-175047.postman.co/workspace/Egha-Arya's-Workspace~23843c0a-c4a7-4902-874f-88be9e3f3134/collection/51109991-8d732fab-e0c6-43df-93a9-b4a587a32950?action=share&source=collection_link&creator=51109991"
+	},
+	"item": [{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [{
+						"key": "token",
+						"value": "8|L7pb7VxfLL38rFSHavhPc4la84vLnTu3YoMogyyC88e20b03",
+						"type": "string"
+					}]
+				},
+				"method": "POST",
+				"header": [{
+					"key": "Accept",
+					"value": "application/json",
+					"type": "text"
+				}],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"admin\",\r\n  \"password\": \"1233\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://macrocytic-izayah-unpummeled.ngrok-free.dev/api/login",
+					"protocol": "https",
+					"host": [
+						"macrocytic-izayah-unpummeled",
+						"ngrok-free",
+						"dev"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbWFjcm9jeXRpYy1pemF5YWgtdW5wdW1tZWxlZC5uZ3Jvay1mcmVlLmRldi9hcGkvbG9naW4iLCJpYXQiOjE3Njc2NjY5MzcsImV4cCI6MTc2NzY3MDUzNywibmJmIjoxNzY3NjY2OTM3LCJqdGkiOiJjRGlubE1QNGJJWUs2cTdGIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.15TdzeY7MIWYvSu_VnH-ic3OW9zug5ySt1JGqF8bpPc",
+						"type": "string"
+					}]
+				},
+				"method": "GET",
+				"header": [{
+					"key": "Accept",
+					"value": "application/json",
+					"type": "text"
+				}],
+				"url": {
+					"raw": "https://macrocytic-izayah-unpummeled.ngrok-free.dev/api/pesanan",
+					"protocol": "https",
+					"host": [
+						"macrocytic-izayah-unpummeled",
+						"ngrok-free",
+						"dev"
+					],
+					"path": [
+						"api",
+						"pesanan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Backup",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbWFjcm9jeXRpYy1pemF5YWgtdW5wdW1tZWxlZC5uZ3Jvay1mcmVlLmRldi9hcGkvbG9naW4iLCJpYXQiOjE3Njc2NjY5MzcsImV4cCI6MTc2NzY3MDUzNywibmJmIjoxNzY3NjY2OTM3LCJqdGkiOiJjRGlubE1QNGJJWUs2cTdGIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.15TdzeY7MIWYvSu_VnH-ic3OW9zug5ySt1JGqF8bpPc",
+						"type": "string"
+					}]
+				},
+				"method": "POST",
+				"header": [{
+					"key": "Accept",
+					"value": "application/json",
+					"type": "text"
+				}],
+				"body": {
+					"mode": "formdata",
+					"formdata": [{
+							"key": "data",
+							"value": "{\n  \"kode_transaksi\": \"TRX001\",\n  \"biaya\": 150000,\n  \"nama_pelanggan\": \"Budi Santoso\",\n  \"nomor_telp\": \"08123456789\"\n}",
+							"type": "text"
+						},
+						{
+							"key": "foto_awal",
+							"type": "file",
+							"src": "/C:/Users/EGHA/Downloads/kucing.jpg"
+						},
+						{
+							"key": "foto_progress_1",
+							"type": "file",
+							"src": "/C:/Users/EGHA/Downloads/kucing.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://macrocytic-izayah-unpummeled.ngrok-free.dev/api/pesanan-backup",
+					"protocol": "https",
+					"host": [
+						"macrocytic-izayah-unpummeled",
+						"ngrok-free",
+						"dev"
+					],
+					"path": [
+						"api",
+						"pesanan-backup"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
