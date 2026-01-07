@@ -15,36 +15,32 @@ class PesananController extends Controller
      */
     public function index()
     {
+        $pesanan = PesananServis::latest()->get();
+
         return response()->json([
             'success' => true,
-            'total' => PesananServis::count(),
-            'data' => PesananServis::all()->map(function ($item) {
+            'total'   => $pesanan->count(),
+            'data'    => $pesanan->map(function ($item) {
                 return array_merge($item->toArray(), [
-                    'foto_awal_url' => $item->foto_awal ? asset('storage/' . $item->foto_awal) : null,
-                    'foto_progress_1_url' => $item->foto_progress_1 ? asset('storage/' . $item->foto_progress_1) : null,
-                    'foto_progress_2_url' => $item->foto_progress_2 ? asset('storage/' . $item->foto_progress_2) : null,
-                    'foto_progress_3_url' => $item->foto_progress_3 ? asset('storage/' . $item->foto_progress_3) : null,
-                    'foto_progress_4_url' => $item->foto_progress_4 ? asset('storage/' . $item->foto_progress_4) : null,
-                    'foto_progress_5_url' => $item->foto_progress_5 ? asset('storage/' . $item->foto_progress_5) : null,
+                    'foto_1_url' => $item->foto_1 ? asset('storage/' . $item->foto_1) : null,
+                    'foto_2_url' => $item->foto_2 ? asset('storage/' . $item->foto_2) : null,
+                    'foto_3_url' => $item->foto_3 ? asset('storage/' . $item->foto_3) : null,
                 ]);
-            })
+            }),
         ]);
     }
 
     /**
-     * BACKUP + UPLOAD FOTO
+     * POSTING + UPLOAD FOTO
      */
-    public function backup(Request $request)
+    public function posting(Request $request)
     {
         $request->validate([
             'data' => 'required|string',
 
-            'foto_awal' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'foto_progress_1' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'foto_progress_2' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'foto_progress_3' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'foto_progress_4' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'foto_progress_5' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'foto_1' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'foto_2' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'foto_3' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         // decode JSON string
@@ -61,19 +57,18 @@ class PesananController extends Controller
         $pesanan = PesananServis::updateOrCreate(
             ['kode_transaksi' => $data['kode_transaksi']],
             [
+                'tanggal' => $data['tanggal'] ?? null,
                 'biaya' => $data['biaya'] ?? 0,
+                'nama_teknisi' => $data['nama_teknisi'] ?? null,
                 'nama_pelanggan' => $data['nama_pelanggan'] ?? null,
                 'nomor_telp' => $data['nomor_telp'] ?? null,
             ]
         );
 
         $fotoFields = [
-            'foto_awal',
-            'foto_progress_1',
-            'foto_progress_2',
-            'foto_progress_3',
-            'foto_progress_4',
-            'foto_progress_5',
+            'foto_1',
+            'foto_2',
+            'foto_3',
         ];
 
         foreach ($fotoFields as $field) {
@@ -107,7 +102,7 @@ class PesananController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'Backup & upload foto berhasil',
+            'message' => 'Posting & upload foto berhasil',
             'data' => $pesanan
         ]);
     }

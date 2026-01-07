@@ -19,6 +19,13 @@ use App\Http\Controllers\Api\PesananController;
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
+    Route::get('/cek-token', function () {
+        return response()->json([
+            'valid' => true,
+            'user' => auth()->user(),
+        ]);
+    });
+
     Route::get('/pesanan', [PesananController::class, 'index']);
-    Route::post('/pesanan-backup', [PesananController::class, 'backup']);
+    Route::post('/posting-pesanan', [PesananController::class, 'posting']);
 });

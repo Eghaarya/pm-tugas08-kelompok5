@@ -1,6 +1,20 @@
 # Dokumentasi API Pesanan Servis
 
-## Base URL
+## Install Server Laravel with JWT Token
+```bash
+cd backend
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+php artisan serve
+```
+```bash
+ngrok http 8000
+```
+
+## Base URL `frontend/lib/services/api_service.dart`
 ```
 http://your-domain.com/api
 ```
@@ -32,7 +46,7 @@ POST /login
 
 ---
 
-### 2. Get All Pesanan
+### 2. Get Pesanan
 ```
 GET /pesanan
 Headers: Authorization: Bearer {token}
@@ -49,9 +63,9 @@ Headers: Authorization: Bearer {token}
 
 ---
 
-### 3. Backup & Upload Foto
+### 3. Post Pesanan & Upload Foto
 ```
-POST /pesanan-backup
+POST /posting-pesanan
 Headers: Authorization: Bearer {token}
 Content-Type: multipart/form-data
 ```
@@ -66,14 +80,13 @@ Content-Type: multipart/form-data
     "nomor_telp": "08123456789"
   }
   ```
-- `foto_awal` (optional): image file (jpg/jpeg/png, max 2MB)
-- `foto_progress_1` s/d `foto_progress_5` (optional): image files
+- `foto_1` s/d `foto_3` (optional): image files
 
 **Response:**
 ```json
 {
   "success": true,
-  "message": "Backup & upload foto berhasil",
+  "message": "Posting & upload foto berhasil",
   "data": {...}
 }
 ```

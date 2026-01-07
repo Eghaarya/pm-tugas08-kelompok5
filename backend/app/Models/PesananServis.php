@@ -13,14 +13,13 @@ class PesananServis extends Model
 
     protected $fillable = [
         'kode_transaksi',
+        'tanggal',
         'biaya',
+        'nama_teknisi',
         'nama_pelanggan',
         'nomor_telp',
-        'foto_awal',
-        'foto_progress_1',
-        'foto_progress_2',
-        'foto_progress_3',
-        'foto_progress_4',
-        'foto_progress_5'
+        'foto_1',
+        'foto_2',
+        'foto_3',
     ];
 }

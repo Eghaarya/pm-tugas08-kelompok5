@@ -14,15 +14,14 @@ return new class extends Migration
         Schema::create('pesanan_servis', function (Blueprint $table) {
             $table->id();
             $table->string('kode_transaksi')->unique();
+            $table->date('tanggal');
             $table->decimal('biaya', 12, 2);
+            $table->string('nama_teknisi');
             $table->string('nama_pelanggan');
             $table->string('nomor_telp');
-            $table->string('foto_awal')->nullable();
-            $table->string('foto_progress_1')->nullable();
-            $table->string('foto_progress_2')->nullable();
-            $table->string('foto_progress_3')->nullable();
-            $table->string('foto_progress_4')->nullable();
-            $table->string('foto_progress_5')->nullable();
+            $table->string('foto_1')->nullable();
+            $table->string('foto_2')->nullable();
+            $table->string('foto_3')->nullable();
             $table->timestamps();
         });
     }
