@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
   static const String baseUrl =
-      'https://macrocytic-izayah-unpummeled.ngrok-free.dev/api';
+      'https://libby-interpressure-tena.ngrok-free.dev/api';
 
   /// ================= TOKEN =================
   static Future<String?> getToken() async {

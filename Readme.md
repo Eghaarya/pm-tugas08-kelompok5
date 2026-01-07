@@ -1,17 +1,44 @@
 # Dokumentasi API Pesanan Servis
 
+## Install UI Flutter 
+```bash
+cd frontend
+flutter pub get
+flutter run
+```
+
 ## Install Server Laravel with JWT Token
 ```bash
 cd backend
 composer install
 cp .env.example .env
 php artisan key:generate
-php artisan migrate
+php artisan migrate ( sebelum eksekusi ini pastikan .env sudah di konfigurasi)
 php artisan db:seed
+php artisan storage:link
+php artisan jwt:secret
 php artisan serve
 ```
+
+## Setting .env
+```bash
+Pastikan APP_KEY terisi Otomatis
+Pastikan JWT_Secret Terisi Otomatis
+
+Pastikan DB .env di setting terlebih dahulu sebelum migrate
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE= (setting di phpmysql)
+DB_USERNAME=root
+DB_PASSWORD=
+
+```
+
+## Cara Jalankan Side Server Ngrok
 ```bash
 ngrok http 8000
+Muncul Domain "https:xxxxxxx.xxxxx.xxxx" - Copy ke api_service.dart
 ```
 
 ## Base URL `frontend/lib/services/api_service.dart`
